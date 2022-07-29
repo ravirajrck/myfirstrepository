@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div>
+  <div id="product-box2">
+    <div style="float: left">
+      <img src="{{ pro.image }}" width="200px" />
+    </div>
+
+    <div style="float: left">
+      <div class="product-flield">ID : {{ pro.id }}</div>
+      <div class="product-flield">Title : {{ pro.title }}</div>
+      <div class="product-flield">Price : {{ pro.price }}</div>
+      <div class="product-flield">Description : {{ pro.description }}</div>
+      <div class="product-flield">Category : {{ pro.category }}</div>
+      <div class="product-flield">
+        Rating : Rate - {{ pro.rate }}, Count - {{ pro.count }}
+      </div>
+    </div>
+
+    <div style="float: left">
+      <button #addtocart class="btn btn-primary" (click)="add_to_cart()">
+        Add TO Cart
+      </button>
+      <button class="btn btn-success" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
+</div>

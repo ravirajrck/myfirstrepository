@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<table class="table">
+  <tr>
+    <th>Se. No.</th>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Image</th>
+    <!-- <th>Description</th> -->
+    <th>Category</th>
+    <th>Price</th>
+    <th style="width: 150px">Quantity</th>
+    <th>Total</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let order of data; let i = index">
+    <td>
+      <b>{{ i + 1 }}</b>
+    </td>
+    <td>{{ order.id }}</td>
+    <td>{{ order.title }}</td>
+    <td>
+      <img src="{{ order.image }}" height="100px" />
+    </td>
+    <!-- <td>{{ order.description }}</td> -->
+
+    <td>{{ order.category }}</td>
+    <td>{{ order.price }}</td>
+    <td>
+      <div>
+        <button (click)="decrease(i)">-</button>
+        <span style="margin: 5px; font-weight: bold">
+          {{ order.quantity }}
+        </span>
+        <button (click)="increase(i)">+</button>
+      </div>
+    </td>
+    <td>
+      {{ order.subtotal }}
+    </td>
+    <td>
+      <button class="btn btn-primary" (click)="remove(i)">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><b> Total</b></td>
+    <td>
+      <b> {{ totalquantity }}</b>
+    </td>
+    <td>
+      <b>{{ total }}</b>
+    </td>
+    <td></td>
+  </tr>
+</table>

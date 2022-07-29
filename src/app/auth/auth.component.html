@@ -1,0 +1,347 @@
+<div class="p-2 mb-0 bg-success text-white">
+  <button class="headerbtn" (click)="signup()">Signup</button>
+  <button class="headerbtn" (click)="login()">Login</button>
+</div>
+
+<div>
+  <div style="margin: 5%; border: 1px solid gray; width: 500px; padding: 10px">
+    <form
+      #signupform="ngForm"
+      (ngSubmit)="submit(signupform, signupform.valid)"
+    >
+      <table>
+        <tr>
+          <td colspan="2" style="text-align: center"><h3>Sign Up</h3></td>
+        </tr>
+        <tr>
+          <td>First Name :</td>
+          <td>
+            <div
+              class="text-danger"
+              *ngIf="
+                submitted &&
+                firstname.invalid &&
+                (firstname.pristine || firstname.dirty)
+              "
+            >
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  firstname.errors?.required &&
+                  (firstname.pristine || firstname.dirty)
+                "
+              >
+                This Fiels is Required.
+              </div>
+
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  firstname.errors?.pattern &&
+                  (firstname.pristine || firstname.dirty)
+                "
+              >
+                Enter only A-Z Letter,can't use Spacial Character.
+              </div>
+            </div>
+            <input
+              type="text"
+              required
+              name="firstname"
+              [(ngModel)]="model.firstname"
+              minlength="2"
+              ngModel
+              #firstname="ngModel"
+              pattern="^[a-zA-Z \-\']+"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name :</td>
+          <td>
+            <div
+              class="text-danger"
+              *ngIf="
+                submitted &&
+                lastname.invalid &&
+                (lastname.pristine || lastname.dirty)
+              "
+            >
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  lastname.errors?.pattern &&
+                  (lastname.pristine || lastname.dirty)
+                "
+              >
+                Enter only A-Z Letter,can't use Spacial Character.
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  lastname.errors?.required &&
+                  (lastname.pristine || lastname.dirty)
+                "
+              >
+                This field is Required.
+              </div>
+            </div>
+
+            <input
+              type="text"
+              required
+              name="lastname"
+              [(ngModel)]="model.lastname"
+              minlength="2"
+              ngModel
+              #lastname="ngModel"
+              pattern="^[a-zA-Z \-\']+"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Gender :</td>
+          <td>
+            <div
+              class="text-danger"
+              *ngIf="
+                submitted && gender.invalid && (gender.pristine || gender.dirty)
+              "
+            >
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  gender.errors?.required &&
+                  (gender.pristine || gender.dirty)
+                "
+              >
+                This field is Required.
+              </div>
+            </div>
+            <span>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                [(ngModel)]="model.gender"
+                required
+                ngModel
+                #gender="ngModel"
+              />
+              Male
+            </span>
+            <span>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                [(ngModel)]="model.gender"
+                required
+                ngModel
+                #gender="ngModel"
+              />
+              Female
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>Moblie no. :</td>
+
+          <td>
+            <div
+              class="text-danger"
+              *ngIf="
+                submitted &&
+                mobilenumber.invalid &&
+                (mobilenumber.pristine || mobilenumber.dirty)
+              "
+            >
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  mobilenumber.errors?.required &&
+                  (mobilenumber.pristine || mobilenumber.dirty)
+                "
+              >
+                This field is Required.
+              </div>
+
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  mobilenumber.errors?.pattern &&
+                  (mobilenumber.pristine || mobilenumber.dirty)
+                "
+              >
+                Enter Valid Moblie number
+              </div>
+            </div>
+            <input
+              type="text"
+              required
+              name="mobilenumber"
+              [(ngModel)]="model.mobilenumber"
+              ngModel
+              #mobilenumber="ngModel"
+              minlength="10"
+              pattern="[0-9]{10}"
+              maxlength="10"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>E-Mail :</td>
+          <td>
+            <div class="text-danger" *ngIf="emailalert">
+              Use another email, this is available.
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                submitted && email.invalid && (email.pristine || email.dirty)
+              "
+            >
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  email.errors?.required &&
+                  (email.pristine || email.dirty)
+                "
+              >
+                This field is Required.
+              </div>
+
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  email.errors?.pattern &&
+                  (email.pristine || email.dirty)
+                "
+              >
+                Enter Valid Email.
+              </div>
+            </div>
+            <input
+              type="email"
+              required
+              [required]="true"
+              name="email"
+              [(ngModel)]="model.email"
+              pattern="^[a-z?A-Z0-9+_.-]+@[a-z?A-Z0-9.-]+$"
+              ngModel
+              #email="ngModel"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Password :</td>
+          <td>
+            <div
+              class="text-danger"
+              *ngIf="
+                submitted &&
+                password.invalid &&
+                (password.pristine || password.dirty)
+              "
+            >
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  password.errors?.minlength &&
+                  (password.pristine || password.dirty)
+                "
+              >
+                Enter minimum 8 characters.
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  password.errors?.required &&
+                  (password.pristine || password.dirty)
+                "
+              >
+                This field is Required.
+              </div>
+
+              <div
+                class="text-danger"
+                *ngIf="
+                  submitted &&
+                  password.errors?.pattern &&
+                  (password.pristine || password.dirty)
+                "
+              >
+                <!-- Password should have minimum 8 characters, at least 1 uppercase<br />
+              letter, 1 lowercase letter, 1 number and 1 Spacial Character -->
+                Please Enter Strong Password
+              </div>
+            </div>
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="model.password"
+              required
+              minlength="6"
+              #password="ngModel"
+              ngModel
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Confirm Password :</td>
+          <td>
+            <div
+              class="text-danger"
+              *ngIf="
+                password_match &&
+                password.value != confirmpassword.value &&
+                (confirmpassword.pristine || confirmpassword.dirty)
+              "
+            >
+              Password Mismatch
+            </div>
+
+            <input
+              type="password"
+              name="confirmpassword"
+              [(ngModel)]="model.confirmpassword"
+              required
+              minlength="6"
+              ngModel
+              #confirmpassword="ngModel"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button (click)="sim()" type="submit" class="btn btn-success">
+              Submit
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="form-group">
+  <label>First Name</label>
+  <input type="text" formControlName="firstName" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+  <div *ngIf="submitted && f.firstName.errors" class="alert-danger">         
+ <div *ngIf="f.firstName.errors.required" class="error">First Name is required</div>
+    
+  </div> -->

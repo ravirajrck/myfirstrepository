@@ -1,0 +1,33 @@
+<app-header></app-header>
+<select #select (change)="category(select.value)">
+  <option value="all">All</option>
+  <option *ngFor="let product of categories">{{ product }}</option>
+</select>
+
+<div *ngFor="let product of all_products" class="justify-content-center">
+  <div id="product-box" class="col-md-2" style="float: left">
+    <div style="height: 500px" routerLink="{{ product.id }}">
+      <div class="product-flield" style="float: left">
+        <img src="{{ product.image }}" width="200px" height="250px" />
+      </div>
+      <div style="float: left">
+        <!-- <div class="product-flield">ID : {{ product.id }}</div> -->
+        <div class="product-flield">{{ product.title }}</div>
+        <div class="product-flield"><b>Price : </b>{{ product.price }}</div>
+        <!-- <div class="product-flield">Discription : {{ product.discription }}</div>-->
+        <div class="product-flield">
+          <b>Category :</b> {{ product.category }}
+        </div>
+        <div class="product-flield">
+          Rating : Rate - {{ product.rating.rate }} Count -
+          {{ product.rating.count }}
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; display: inline-block">
+      <button class="btn btn-primary" (click)="add_to_cart(product.id)">
+        Add To Cart
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+table tr td {
+  padding: 10px;
+}
+
+.headerbtn {
+  padding: 5px;
+  margin: 5px;
+  width: 100px;
+  background: none;
+  border: none;
+  color: aliceblue;
+  font-size: 20px;
+}
+
+.headerbtn:hover {
+  color: rgb(228, 243, 20);
+}
+
+/* .ng-invalid:not(form) {
+  border: 2px solid #fa0400;
+} */
+
+/* .ng-valid.required,
+.ng-valid[required] {
+  border: 2px solid #0d9e00;
+} */

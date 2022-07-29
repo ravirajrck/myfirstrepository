@@ -1,0 +1,97 @@
+<div class="p-2 mb-0 bg-success text-white">
+  <button class="headerbtn" (click)="signup()">Signup</button>
+  <button class="headerbtn" (click)="login()">Login</button>
+</div>
+
+<div style="margin: 5%; border: 1px solid gray; width: 500px; padding: 10px">
+  <form #loginform="ngForm" (ngSubmit)="submit(loginform, loginform.valid)">
+    <div><h2>Login</h2></div>
+
+    <div><label> Email</label></div>
+    <div>
+      <div
+        class="text-danger"
+        *ngIf="submitted && email.invalid && (email.pristine || email.dirty)"
+      >
+        <div
+          class="text-danger"
+          *ngIf="
+            submitted &&
+            email.errors?.required &&
+            (email.pristine || email.dirty)
+          "
+        >
+          Required this field.
+        </div>
+        <div
+          class="text-danger"
+          *ngIf="
+            submitted &&
+            email.errors?.pattern &&
+            (email.pristine || email.dirty)
+          "
+        >
+          Enter valid email.
+        </div>
+      </div>
+      <input
+        type="email"
+        required
+        name="email"
+        ngModel
+        [(ngModel)]="logindata.email"
+        #email="ngModel"
+        pattern="^[a-z?A-Z0-9+_.-]+@[a-z?A-Z0-9.-]+$"
+        (click)="emailandpass = false"
+      />
+    </div>
+    <br />
+    <div><label> Password</label></div>
+    <div>
+      <div
+        class="text-danger"
+        *ngIf="
+          submitted && password.invalid && (password.pristine || password.dirty)
+        "
+      >
+        <div
+          class="text-danger"
+          *ngIf="
+            submitted &&
+            password.errors?.required &&
+            (password.pristine || password.dirty)
+          "
+        >
+          Required this field.
+        </div>
+      </div>
+
+      <input
+        type="password"
+        required
+        name="password"
+        ngModel
+        [(ngModel)]="logindata.password"
+        #password="ngModel"
+        (click)="emailandpass = false"
+      />
+    </div>
+    <br />
+    <div
+      *ngIf="emailandpass"
+      class="text-danger"
+      style="
+        background-color: rgb(255, 233, 233);
+        padding: 20px;
+        border: 1px solid red;
+      "
+    >
+      "Your email and password don't match.Did you sign up with a different
+      email address?";
+    </div>
+    <br />
+    <div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+</div>
