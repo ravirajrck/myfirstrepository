@@ -15,21 +15,13 @@
       >
         <div
           class="text-danger"
-          *ngIf="
-            submitted &&
-            email.errors?.required &&
-            (email.pristine || email.dirty)
-          "
+          *ngIf="submitted && (email.pristine || email.dirty)"
         >
           Required this field.
         </div>
         <div
           class="text-danger"
-          *ngIf="
-            submitted &&
-            email.errors?.pattern &&
-            (email.pristine || email.dirty)
-          "
+          *ngIf="submitted && (email.pristine || email.dirty)"
         >
           Enter valid email.
         </div>
@@ -56,11 +48,7 @@
       >
         <div
           class="text-danger"
-          *ngIf="
-            submitted &&
-            password.errors?.required &&
-            (password.pristine || password.dirty)
-          "
+          *ngIf="submitted && (password.pristine || password.dirty)"
         >
           Required this field.
         </div>
